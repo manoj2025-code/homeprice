@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bangalore Home Price Calculator</title>
+    <style>
+        body { font-family: Arial; background: #f4f6f8; }
+        .box {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        button {
+            background: #2c7be5;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        h2 { text-align: center; }
+        .price {
+            text-align: center;
+            font-size: 20px;
+            color: green;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Bangalore Home Price</h2>
+
+    <form method="POST">
+        <label>Area</label>
+        <select name="area" required>
+            {% for area in areas %}
+            <option value="{{ area }}">{{ area }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Square Feet</label>
+        <input type="number" name="sqft" required>
+
+        <label>BHK</label>
+        <input type="number" name="bhk" required>
+
+        <label>Bathrooms</label>
+        <input type="number" name="bath" required>
+
+        <button type="submit">Calculate Price</button>
+    </form>
+
+    {% if price %}
+    <div class="price">
+        Estimated Price: ₹ {{ price }} Lakhs
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
